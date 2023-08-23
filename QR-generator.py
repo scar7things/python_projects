@@ -14,3 +14,4 @@ def generate_qrcode(text):
     
 url = input("Enter your url: ")
 generate_qrcode(url)
+
