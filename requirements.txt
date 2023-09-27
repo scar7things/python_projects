@@ -1,0 +1,15 @@
+# QR Generator
+qrcode
+
+# Automated Morning SMS
+requests
+
+# Face Detection
+opencv-python
+
+# Stopwatch (No additional dependencies)
+
+# Basic Calculator (No additional dependencies)
+
+# Random Password Generator (No additional dependencies)
+
