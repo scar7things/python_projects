@@ -4,19 +4,28 @@ from datetime import datetime
 counter = 0  # Start from 00:00:00
 running = False
 
+# Counter list for hours (0 to 23)
+counter_hours = list(range(24))
+
 def counter_label(label):
     def count():
         global counter
         if running:
-            tt = datetime.fromtimestamp(counter)
-            string = tt.strftime("%H:%M:%S")
+            # Calculate hours, minutes, and seconds
+            hours = counter // 3600
+            minutes = (counter % 3600) // 60
+            seconds = counter % 60
+
+            # Format the time as HH:MM:SS
+            string = '{:02d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
             label['text'] = string
 
             # Update the label after 1000ms (1 second)
             label.after(1000, count)
             counter += 1
 
-    count()  # Start the counter initially
+        # Start the counter initially
+    count()
 
 def start(label):
     global running
@@ -61,4 +70,3 @@ stop_button.pack(side="left")
 reset_button.pack(side="left")
 
 root.mainloop()
-
