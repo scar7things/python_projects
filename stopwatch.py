@@ -1,22 +1,16 @@
 import tkinter as tk
 from datetime import datetime
 
-counter = 66600
+counter = 0  # Start from 00:00:00
 running = False
 
 def counter_label(label):
     def count():
+        global counter
         if running:
-            global counter
-
-            if counter == 66600:
-                display = "Starting..."
-            else:
-                tt = datetime.fromtimestamp(counter)
-                string = tt.strftime("%H:%M:%S")
-                display = string
-
-            label['text'] = display
+            tt = datetime.fromtimestamp(counter)
+            string = tt.strftime("%H:%M:%S")
+            label['text'] = string
 
             # Update the label after 1000ms (1 second)
             label.after(1000, count)
@@ -41,7 +35,7 @@ def stop():
 
 def reset(label):
     global counter
-    counter = 66600
+    counter = 0  # Reset to 00:00:00
 
     if not running:
         reset_button['state'] = 'disabled'
@@ -67,3 +61,4 @@ stop_button.pack(side="left")
 reset_button.pack(side="left")
 
 root.mainloop()
+
